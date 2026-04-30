@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  ewallet-db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: ewallet-server-pro
+    ports:
+      - "1434:1433" # Dùng cổng 1434 để không trùng với các container đang có của bạn
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=UyenNguyen@DBMS2024 # Mật khẩu mạnh cho dự án
+    volumes:
+      - ./sql_scripts:/usr/src/scripts # Kết nối folder code vào máy chủ
